@@ -1,3 +1,4 @@
+\\with hash map
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
@@ -18,6 +19,24 @@ public:
             maxLength = max(maxLength, i - start + 1);
         }
         
+        return maxLength;
+    }
+};
+
+\\
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        vector<int> dict(256, -1); \\a dict containing all ASCII
+        int maxLength = 0;
+        int start = 0;
+        
+        for (int i = 0; i < s.length(); i++)
+        {
+            start = max(dict[s[i]]+1, start);
+            dict[s[i]] = i;
+            maxLength = max( maxLength, i - start + 1);
+        }
         return maxLength;
     }
 };
