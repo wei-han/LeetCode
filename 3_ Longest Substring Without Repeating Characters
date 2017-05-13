@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<int, int> dict;
+        int maxLength = 0;
+        int start = 0;
+        for (int i = 0; i < s.length(); i++)
+        {
+            unordered_map<int, int>::const_iterator got = dict.find (s[i]);
+            if (got == dict.end())
+                dict.insert({s[i],i});
+            else
+            {
+                start = max(dict.at(s[i]) + 1, start); \\acbedbga, the start will go back!!
+                dict[s[i]] = i;
+            }
+            
+            maxLength = max(maxLength, i - start + 1);
+        }
+        
+        return maxLength;
+    }
+};
