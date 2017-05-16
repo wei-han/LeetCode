@@ -38,3 +38,35 @@ public:
         
     }
 };
+
+//create numRows string array!
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if (numRows <= 1) return s;
+        
+        string str[numRows];
+        
+        int row = 0, step = 1;
+        
+        for (int i = 0; i < s.size(); i++)
+        {
+            str[row].push_back(s[i]);
+            
+            if (row == 0)
+                step = 1;
+             if (row == numRows - 1)
+                step = -1;
+            
+            row += step;
+        }
+        string newString="";
+        
+        for (int i = 0; i<numRows; i++)
+        {
+            newString.append(str[i]);
+        }
+        
+        return newString;
+    }
+};
