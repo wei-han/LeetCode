@@ -9,3 +9,23 @@ bool isPalindrome(int x) {
         }
         return (sum == ori);
 }
+
+//check half digits
+bool isPalindrome(int x) {
+        if(x<0) return false;
+    //    if(x!=0 && x%10 == 0) return false;
+        int sum=0, ori = x, num=0;
+        
+        while (x!=0)
+        {
+            num++;
+            x/=10;
+        }
+        
+        for (int i = 0; i< num/2; i++)
+        {
+            sum = sum*10+ori%10;
+            ori = ori/10;
+        }
+        return (sum == ori&&num%2==0)|| (sum == ori/10&&num%2==1);//case of 10, 1/10=0, but it is not palindrome.
+}
