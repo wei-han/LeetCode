@@ -1,0 +1,18 @@
+\\exceeds time limit
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int maxv = 0, vol = 0;
+        for (int width = 1; width < height.size(); width++)
+        {
+            int maxh = 0;
+            for (int j = 0; j < height.size() - width; j++)
+            {
+                if (height[j]>maxh && height[j+width]>maxh) maxh=(height[j]<height[j+width]?height[j]:height[j+width]);
+            }
+            vol = maxh * width;
+            maxv = max(maxv, vol);
+        }
+        return maxv;
+    }
+};
