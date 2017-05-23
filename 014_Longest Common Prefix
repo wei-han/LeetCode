@@ -18,10 +18,36 @@ public:
             {
                 if (len > (strs[i]).size()) break;
                 if (temp != (strs[i]).substr(0,j+1)) break;
-                if (i == strs.size()-1) update = true;
+                if (i == strs.size()-1) update = true;//update only the last loop pass
             }
             if (update == true) longest =temp;
         }
         return longest;
+}
+};
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        string longest="", temp="";
+        if (strs.size() == 0) return "";
+        
+        if (strs.size() == 1) return strs[0];
+        
+
+        int j = 0;
+        for (; j<(strs[0]).length(); j++)
+        {
+            bool cont = false;
+            for (int i = 1; i < strs.size(); i++)
+            {
+                
+                if (j+1 > (strs[i]).size()) break;
+                if ((strs[0])[j] != (strs[i])[j]) break;
+                if (i == strs.size()-1) cont = true;//update only the last loop pass
+            }
+            if (!cont)  break;
+        }
+        return (strs[0]).substr(0,j);
 }
 };
