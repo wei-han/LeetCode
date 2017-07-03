@@ -1,0 +1,23 @@
+//recursive method
+class Solution {
+public:
+    vector<string> generateParenthesis(int n)
+    {
+        vector<string> ans;
+        adding(ans, "", n, 0);
+        return ans;
+    }
+    
+    void adding(vector<string> &v, string str, int left, int right)
+    {
+        if (left==0 && right==0)
+        {
+            v.push_back(str);
+            return;
+        }
+            
+        if (left > 0) {adding(v, str+"(", left-1, right+1);}
+        if (right > 0) {adding(v, str+")", left, right-1);}
+    }
+    
+};
