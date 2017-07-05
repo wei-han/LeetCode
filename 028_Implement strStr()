@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+    //length() is different from int???
+        int hay = haystack.length();
+        int need = needle.length();
+        if (!needle.length()) return 0;
+        for (int i = 0; i < hay - need +1; i++)
+        {
+            for (int j = 0; j < need; j++)
+                {
+                    if (haystack[i+j] != needle[j]) break;
+                       
+                    if (j == need - 1) return i;
+                }
+           
+            
+        }
+        return -1;
+    }
+};
