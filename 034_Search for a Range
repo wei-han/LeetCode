@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        
+        int lo = 0, hi =nums.size()-1, mid;
+        vector<int> ans = {-1, -1};
+        if (hi < 0) return ans;
+        //search for the leftmost one
+        while(lo < hi)
+        {
+            mid = (lo + hi)/2;
+            if (nums[mid] < target) lo = mid+1;
+            else hi = mid;           
+        }
+        if (nums[lo] != target) return ans;
+        ans[0] = lo;
+        
+        //search for the rightmost one
+        hi = nums.size()-1;
+        while(lo < hi)
+        {
+            mid = (lo + hi)/2 + 1; //make the bias to the right, if lo always = mid, it get stuck!!
+            if (nums[mid] > target) hi = mid - 1;
+            else lo = mid;
+        }
+        ans[1] = hi;
+        return ans;
+        
+
+    }
+};
