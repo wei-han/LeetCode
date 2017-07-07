@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string countAndSay(int n) {
+        if (!n) return "";
+        string initial = "1";
+        while(--n)
+        {
+            string following = "";
+            for(int j = 0; j < initial.length(); j++)
+            {
+                int count = 1;
+                while(j < initial.length()-1 && initial[j] == initial[j+1])//how to count duplicate!!
+                {
+                    count++;
+                    j++;
+                }
+                
+                following = following + to_string(count) + initial[j];
+
+            }
+            initial = following;
+        }
+        return initial;
+    }
+};
