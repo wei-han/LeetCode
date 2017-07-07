@@ -1,0 +1,31 @@
+class Solution {
+public:
+    void search(vector<int>& candidates, int target, vector<int>& combination, vector<vector<int>>& ans, int begin)
+    {
+        //the ending of recursive
+        if(!target)
+        {
+            ans.push_back(combination);
+            return;
+        }
+        
+        for(int i = begin; i<candidates.size() && target>=candidates[i]; i++ )
+        {
+            combination.push_back(candidates[i]);
+            search(candidates, target-candidates[i], combination, ans, i);
+            combination.pop_back();//the backtracting
+        }
+        
+    }
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) 
+    {
+        vector<int> combination;
+        vector<vector<int>> ans;
+        sort(candidates.begin(), candidates.end());
+        search(candidates, target, combination, ans, 0);
+        return ans;
+        
+    }
+    
+
+};
