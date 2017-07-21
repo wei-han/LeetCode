@@ -28,3 +28,7 @@ public:
         
     }
 };
+
+1122  1122
+ ||    | |
+//these two permutations are duplicate!!
