@@ -23,7 +23,8 @@ public:
          
             swap(nums[begin], nums[i]);
             per(ans, nums, begin+1);
-//don't swap back!!
+//don't swap back!! the next loop will continue from the preivous one, not the first one.
+//Permutation I should continue from the first one or previous one, both are OK!
         }
         
     }
