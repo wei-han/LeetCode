@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        if(matrix.empty()) return {};
+        int m = matrix.size(), n = matrix[0].size();
+        vector<int> ans(m*n);
+        int up = 0, down = m-1, left = 0, right = n-1, k=0;
+        
+        while(true)
+        {
+            for(int col = left; col <= right; col++) ans[k++]=matrix[up][col];
+            if(++up > down) break;
+            
+            for(int row = up; row <= down; row++) ans[k++] = matrix[row][right];
+            if(--right < left) break;
+            
+            for(int col = right; col >= left; col--) ans[k++] = matrix[down][col];
+            if(--down < up) break;
+            
+            for(int row = down; row >= up; row--) ans[k++] = matrix[row][left];
+            if(++left > right) break;
+        }
+         return ans;
+    }
+};
