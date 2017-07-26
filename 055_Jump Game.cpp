@@ -20,3 +20,12 @@ public:
         return (memo[0]==1);
     }
 };
+
+
+//tricky solution, update the farthest reach 
+bool canJump(int A[], int n) {
+    int i = 0;
+    for (int reach = 0; i < n && i <= reach; ++i)
+        reach = max(i + A[i], reach);
+    return i == n;
+}
