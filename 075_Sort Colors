@@ -1,0 +1,32 @@
+    class Solution {
+    public:
+        void sortColors(int A[], int n) {
+            int second=n-1, zero=0;
+            for (int i=0; i<=second; i++) {
+                while (A[i]==2 && i<second) swap(A[i], A[second--]);//the order is important!
+                while (A[i]==0 && i>zero) swap(A[i], A[zero++]);
+            }
+        }
+    };
+    
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int lo = 0, hi = nums.size() - 1;
+        for (int i = 0; i <= hi;)
+        {   
+            if (nums[i]==0)
+            {
+                swap(nums[i], nums[lo]);
+                lo++;
+                i++;                 
+            }
+            else if(nums[i]==2)
+            {
+                swap(nums[i], nums[hi]);
+                hi--;
+            }
+            else i++;
+        }        
+    }
+};
