@@ -1,0 +1,36 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int m = matrix.size(), n = matrix[0].size();
+        vector<pair<int,int>> coord;
+        for(int i = 0; i < m; i++)
+        {
+            for( int j = 0; j < n; j++)
+            {
+                if (matrix[i][j] == 0) 
+                {
+                    pair<int, int> p(i, j);
+                    coord.push_back(p);
+                }
+            }
+        }
+            
+        for(int i = 0; i < coord.size(); i++)
+        {
+            zero(coord[i].first, coord[i].second, m, n, matrix);
+        }
+    }
+    
+    void zero(int i, int j, int m, int n, vector<vector<int>>& mat )
+    {
+        for(int k = 0; k < n; k++)
+        {
+            mat[i][k] =0;
+        }
+        
+        for(int k = 0; k < m; k++)
+        {
+            mat[k][j] =0;
+        }
+    }
+};
