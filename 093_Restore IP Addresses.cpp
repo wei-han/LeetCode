@@ -29,24 +29,36 @@ public:
 };
 
 
-
+//dfs method
 class Solution {
 public:
     vector<string> restoreIpAddresses(string s) {
+        vector<string> ans;
+        string item;
+        dfs(s, 0, 0, item, ans);
+        return ans;
         
     }
-    
-    void solve(string &s, string item, vector<string> ans)
+    void dfs(string s, int start, int step, string item, vector<string> &ans)
     {
-        if(item.size() == s.size()+3)
+        if(step == 4 && start == s.length())
         {
+            item = item.substr(0, s.length()+3);
             ans.push_back(item);
             return;
         }
-        
-        for(int i = begin; i < s.length(); i++)
+        if(s.length()-start > (4-step)*3) return;
+        if(s.length()-start < (4-step)) return;
+        int num=0;
+        for(int i = start; i<start+4; i++)
         {
-            if(int temp = stoi(s.c_str(), , ))
+            num = num*10 + (s[i] -'0');
+            if(num<=255)
+            {
+                item = item+s[i];
+                dfs(s, i+1, step+1, item+'.', ans);
+            }
+            if(num==0) break;
         }
     }
 };
