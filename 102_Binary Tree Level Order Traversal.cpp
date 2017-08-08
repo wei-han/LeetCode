@@ -45,3 +45,40 @@ public:
         
     }
 };
+
+//no mark used!!
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<int> item;
+        vector<vector<int>> ans;
+        queue<TreeNode*> q;
+        TreeNode* temp;
+        
+        if(!root) return ans;
+        else 
+        {
+            q.push(root);
+        }
+        
+        while(!q.empty())
+        {
+
+            
+            for(int i = 0, n = q.size(); i < n; i++)
+            {   
+                temp = q.front();
+                q.pop();
+                item.push_back(temp->val);
+                if(temp->left) q.push(temp->left);
+                if(temp->right) q.push(temp->right);
+            }
+
+            ans.push_back(item);
+            item={};
+        }
+        
+        return ans;
+        
+    }
+};
