@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
+        int h;
+        int w;
+        
+        w = length(A, C, E, G);
+        h = length(F, H, B, D);
+        
+        return (C-A)*(D-B) + (G-E)*(H-F) - w*h;
+    }
+    
+    int length(int a, int b, int c, int d){
+        if(b<=c || a>=d) return 0;
+        else if (c>=a && d<=b) return d-c;
+        else if (c<=a && d>=b) return b-a;
+        else if (a<=c) return b-c;
+        else return d-a;
+    }
+};
