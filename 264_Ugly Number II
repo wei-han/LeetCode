@@ -1,0 +1,45 @@
+//use set/treeset to sort the ugly numer. Using priority queue.
+class Solution {
+public:
+    int nthUglyNumber(int n) {
+        set<long> res;
+        res.insert(1);
+        
+        for(int i = 1; i< n; i++){
+            long temp = *res.begin();
+            res.erase(res.begin());
+            res.insert(temp*2);
+            res.insert(temp*3);
+            res.insert(temp*5);
+        }
+        return (int) *res.begin();
+    }
+};
+
+
+class Solution {
+public:
+    int nthUglyNumber(int n) {
+        set<int> beautiful;
+        int res = 0;
+        for(int i =0;i<n;){
+            int num = ++res;
+            for(int item: beautiful){
+                if(num%item == 0){
+                    beautiful.insert(res);
+                    num = 7;
+                    break;
+                }
+            }
+            
+            for(int j =6; j>=2 && num; j--)
+            {
+                while(num%j == 0)
+                    num /= j;
+            }
+            if(num == 1) i++;
+            else beautiful.insert(res);
+        }
+        return res;
+    }
+};
